@@ -28,10 +28,20 @@ async function getNotes() {
 async function printNotes() {
     const notes = await getNotes()
 
-    console.log(chalk.bgBlue("There is the LIst of notes:"))
-    notes.forEach(note => console.log(chalk.blue(note.title)))
+    console.log(chalk.bgBlue("There is the List of notes:"))
+    notes.forEach(note => console.log(chalk.blue(note.id), chalk.green(note.title)))
+}
+
+async function removeNotes(id) {
+
+    const notes = await getNotes()
+
+    const removedNote = notes.filter(el => String(el.id) !== String(id))
+
+    await fs.writeFile(notesPath, JSON.stringify(removedNote))
+    console.log(chalk.red(`Note with ${id} was removed`))
 }
 
 module.exports = {
-    addNote, printNotes
+    addNote, printNotes, removeNotes
 }
