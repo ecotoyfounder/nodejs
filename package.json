@@ -1,0 +1,20 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "This is simple NodeJS App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "author": "Pavel Volkov <M3modelist@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/yargs": "^17.0.14",
+    "chalk": "^4.1.2",
+    "yargs": "^17.6.2"
+  }
+}
