@@ -26,10 +26,10 @@ async function getNotes() {
 }
 
 async function printNotes() {
-    const notes = await getNotes()
+    const notes = getNotes()
 
     console.log(chalk.bgBlue("There is the List of notes:"))
-    notes.forEach(note => console.log(chalk.blue(note.id), chalk.green(note.title)))
+    await notes.forEach(note => console.log(chalk.blue(note.id), chalk.green(note.title)))
 }
 
 async function removeNotes(id) {
