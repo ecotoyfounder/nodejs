@@ -45,6 +45,23 @@ async function printNotes() {
     }
 }
 
+async function updateNote({id, title}) {
+    try {
+        const notes = await getNotes()
+
+        const note = notes.find(item => item.id === id)
+        await fs.writeFile(notesPath, JSON.stringify(notes))
+
+        if (note) {
+            note.title = title
+        }
+
+    } catch (error) {
+        console.error(error)
+    }
+
+}
+
 async function removeNotes(id) {
     try {
 
@@ -60,5 +77,5 @@ async function removeNotes(id) {
 }
 
 module.exports = {
-    addNote, getNotes, removeNotes
+    addNote, getNotes, removeNotes, updateNote
 }
