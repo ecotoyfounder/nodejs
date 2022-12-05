@@ -50,11 +50,12 @@ async function updateNote({id, title}) {
         const notes = await getNotes()
 
         const note = notes.find(item => item.id === id)
+        await fs.writeFile(notesPath, JSON.stringify(notes))
+
         if (note) {
             note.title = title
         }
 
-        await fs.writeFile(notesPath, JSON.stringify(notes))
     } catch (error) {
         console.error(error)
     }
